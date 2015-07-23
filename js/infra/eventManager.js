@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-window.Hotel.EventManager = (function() {
+window.hotel.eventManager = (function() {
   var _subscribe = {}; //private to EventManager 
 
   return {
@@ -56,17 +56,24 @@ window.Hotel.EventManager = (function() {
       return this;
     },
   
-    fire: function(eventName, eventHandler, params) {
+    fire: function(eventName, reference, params) {
       
       var subscribe = _subscribe.eventName;
-  
+      
+      // TODO make params into an array or look for a better solution.
+      
       params = params || [];
   
       if (subscribe !== undefined) {
         for (var i = 0; i < subscribe.length; i++) {
           if (subscribe[i].eventHandler === eventHandler)
           {
-            eventHandler.apply(window, params);
+            setTimeout(function() {
+            // TODO figure the reference part out.
+            // refer eventManager.fire('Results Fetched', this, hotelList);
+
+              eventHandler.apply(reference, params); 
+            });
           }
         }
       }
