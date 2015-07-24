@@ -30,7 +30,7 @@
         core_strundefined = typeof undefined,
 
         // Use the correct document accordingly with window argument (sandbox)
-        location = window.location,
+        locations = window.locations,
         document = window.document,
         docElem = document.documentElement,
 
@@ -73,7 +73,7 @@
         rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 
         // A simple way to check for HTML strings
-        // Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
+        // Prioritize #id over <tag> to avoid XSS via locations.hash (#9521)
         // Strict HTML recognition (#11290: must start with <)
         rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
@@ -2254,7 +2254,7 @@
 
                 // Miscellaneous
                 "target": function (elem) {
-                    var hash = window.location && window.location.hash;
+                    var hash = window.locations && window.locations.hash;
                     return hash && hash.slice(1) === elem.id;
                 },
 
@@ -7585,9 +7585,9 @@
         }
     });
     var
-        // Document location
+        // Document locations
         ajaxLocParts,
-        ajaxLocation,
+        ajaxlocations,
         ajax_nonce = jQuery.now(),
 
         ajax_rquery = /\?/,
@@ -7625,19 +7625,19 @@
         allTypes = "*/".concat("*");
 
     // #8138, IE may throw an exception when accessing
-    // a field from window.location if document.domain has been set
+    // a field from window.locations if document.domain has been set
     try {
-        ajaxLocation = location.href;
+        ajaxlocations = locations.href;
     } catch (e) {
         // Use the href attribute of an A element
-        // since IE will modify it given document.location
-        ajaxLocation = document.createElement("a");
-        ajaxLocation.href = "";
-        ajaxLocation = ajaxLocation.href;
+        // since IE will modify it given document.locations
+        ajaxlocations = document.createElement("a");
+        ajaxlocations.href = "";
+        ajaxlocations = ajaxlocations.href;
     }
 
-    // Segment location into parts
-    ajaxLocParts = rurl.exec(ajaxLocation.toLowerCase()) || [];
+    // Segment locations into parts
+    ajaxLocParts = rurl.exec(ajaxlocations.toLowerCase()) || [];
 
     // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
     function addToPrefiltersOrTransports(structure) {
@@ -7789,7 +7789,7 @@
         etag: {},
 
         ajaxSettings: {
-            url: ajaxLocation,
+            url: ajaxlocations,
             type: "GET",
             isLocal: rlocalProtocol.test(ajaxLocParts[1]),
             global: true,
@@ -7999,7 +7999,7 @@
             // Add protocol if not provided (#5866: IE7 issue with protocol-less urls)
             // Handle falsy url in the settings object (#10093: consistency with old signature)
             // We also use the url parameter if available
-            s.url = ((url || s.url || ajaxLocation) + "").replace(rhash, "").replace(rprotocol, ajaxLocParts[1] + "//");
+            s.url = ((url || s.url || ajaxlocations) + "").replace(rhash, "").replace(rprotocol, ajaxLocParts[1] + "//");
 
             // Alias method option to type as per ticket #12004
             s.type = options.method || options.type || s.method || s.type;
