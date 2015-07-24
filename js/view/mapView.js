@@ -1,10 +1,8 @@
 ﻿function renderMarker(locations) {
-    $("#gridpanel").click(function () {
-        $("p").hide();
-    });
+    $("#gridpanel").hide();
 
     $("#canvas").css("display", "block");
-   // document.getElementById("canvas").style.display = "block";
+   
     //------------------------------------	
     var mapProp = {
         center: new google.maps.LatLng(18.520430, 73.856744),
