@@ -3,6 +3,12 @@
 <head>
     <title></title>
     <link href="css/bootstrap.css" rel="stylesheet" />
+
+    <link href="css/StyleSheet.css" rel="stylesheet" />
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
     <!----------NAVBAR---------->
@@ -41,11 +47,11 @@
                     <div class="panel-heading" align="center">
                         <div id="toggle-btn" class="btn-group" data-toggle="buttons">
                             <label class="btn btn-success active">
-                                <input type="radio" name="options" onclick="initialize()">
+                                <input id="map-btn" type="button" name="options" >
                                 MAP
                             </label>
                             <label class="btn btn-success">
-                                <input type="radio" name="options" onclick="gridView()">
+                                <input id = "grid-btn" type="button" name="options" >
                                 GRID
                             </label>
                         </div>
@@ -80,7 +86,6 @@
                     
                                     </a>
                                     </li>
-
                             </ul>
                         </div>
                     </div>
@@ -99,7 +104,7 @@
     <div>
         <div id="canvas"></div>
     </div>
-    
+
 </body>
 <script src="js/library/jQuery.js"></script>
 <script src="js/library/bootstrap.js"></script>
