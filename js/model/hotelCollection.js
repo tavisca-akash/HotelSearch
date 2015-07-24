@@ -30,7 +30,7 @@ hotel.model.hotelCollection = function () {
             for (var index = 0; index < response.Hotels.length; index++) {
                 _hotels.push(new hotel.model.hotelModel(response.Hotels[index]));
             }
-            EventManager.fire('Hotels.fetched', this, _hotels,pagination);
+            EventManager.fire('Hotels.fetched', this, _hotels, pagination);
 
         }).fail(function (error) {
             throw new Error('Could not handle the request!!!');

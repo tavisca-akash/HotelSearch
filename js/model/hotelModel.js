@@ -26,7 +26,6 @@ hotel.model.hotelModel = function (hotel) {
 
     return
     (function () {
-
         hotelData.Address = hotelObj.Address;
         hotelData.HotelId = hotelObj.HotelId;
         hotelData.Image = hotelObj.Image;
