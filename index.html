@@ -5,6 +5,100 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
+    <!----------NAVBAR---------->
+    <nav class="navbar navbar-default" style="background-color: #009900;">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span id="logo">Hotel Search</span></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter City">
+                    </div>
+                    <button class="btn btn-success glyphicon glyphicon-search"></button>
+                </form>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!---------------Side Panel----------------->
+    <div class="row main-row">
+        <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
+            <div class="panel-group sidebar-body" id="accordion-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading" align="center">
+                        <div id="toggle-btn" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-success active">
+                                <input type="radio" name="options" onclick="initialize()">
+                                MAP
+                            </label>
+                            <label class="btn btn-success">
+                                <input type="radio" name="options" onclick="gridView()">
+                                GRID
+                            </label>
+                        </div>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+
+                            <ul class="list-unstyled">
+                                <li class="list-group-item list-group-item-success">Hotel ID :<a id="hotel-id" data-toggle="collapse" href="#layers">
+                    
+                                </a>
+                                </li>
+                                <li class="list-group-item list-group-item-success">Name :<a id="hotel-name" data-toggle="collapse" href="#layers">
+                    
+                                </a>
+                                </li>
+                            </ul>
+                            <span class="pull-right slide-submenu"></span>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse in">
+                        <div class="panel-body list-group">
+                            <ul class="list-unstyled">
+                                <li class="list-group-item list-group-item-warning">
+                                    <a id="street" href="#" class="list-group-item">Street
+                                    </a>
+                                </li>
+                                <li class="list-group-item list-group-item-warning">
+                                    <a id="town" href="#" class="list-group-item">Area
+                                    </a>
+                                    <li class="list-group-item list-group-item-warning">Rating :<a id="rating" class="list-group-item" href="#">
+                    
+                                    </a>
+                                    </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!---------Grid Panel--------->
+        <div>
+            <div id="gridpanel" class="col-sm-8 col-md-9">
+            </div>
+        </div>
+    </div>
+
+    <!----------BODY---------->
+    <div>
+        <div id="canvas"></div>
+    </div>
     
 </body>
 <script src="js/library/jQuery.js"></script>
@@ -21,5 +115,6 @@
 <script src="js/view/containerView.js"></script>
 <script src="js/controllers/containerController.js"></script>
 <script src="js/controllers/headerController.js"></script>
+
 
 </html>
