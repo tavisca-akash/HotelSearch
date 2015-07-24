@@ -27,13 +27,13 @@ hotel.model.hotelModel = function (hotel) {
     return
     (function () {
 
-        hotelData.Address = hotelList.Address;
-        hotelData.HotelId = hotelList.HotelId;
-        hotelData.Image = hotelList.Image;
-        hotelData.Name = hotelList.Name;
-        hotelData.Rating = hotelList.Rating;
-        geoCode.Latitude = hotelList.GeoCode.Latitude;
-        geoCode.Longitude = hotelList.GeoCode.Longitude;
+        hotelData.Address = hotelObj.Address;
+        hotelData.HotelId = hotelObj.HotelId;
+        hotelData.Image = hotelObj.Image;
+        hotelData.Name = hotelObj.Name;
+        hotelData.Rating = hotelObj.Rating;
+        geoCode.Latitude = hotelObj.GeoCode.Latitude;
+        geoCode.Longitude = hotelObj.GeoCode.Longitude;
         return hotelData;
     }());
 };
