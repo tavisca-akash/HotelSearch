@@ -1,11 +1,11 @@
-﻿window.htoel.view.leftPanelView = window.htoel.view.leftPanelView || {};
+﻿//window.htoel.view.leftPanelView = window.htoel.view.leftPanelView || {};
 
 
 
 /**
 *checking for click event on map button
 **/
-$("#map-button").click(function () {
+$("#map-btn").click(function () {
 
     hotel.eventManager.fire('map-button-clicked',this);
 
@@ -14,28 +14,26 @@ $("#map-button").click(function () {
 /**
 *checking for click event on grid button
 **/
-$("#grid-button").click(function () {
+$("#grid-btn").click(function () {
 
     hotel.eventManager.fire('grid-button-clicked', this);
 
 });
 
-
 /**
-*Fetching data from hotel collection and rendering it. 
+*Fetching data from hotel collection and rendering it using funciton renderHotelInfo. 
 **/
 
-leftPanelView.toggle= new funciotn
 leftPanelView.hotelinfo = new function (hotelData) {
-    var hotelData = hotelData;
-
-    $("#hotel-id").val(hotelData.HotelId);
-    $("#hotel-name").val(hotelData.Name);
-    $("#street").val(hotelData.Address.AddressLine1);
-    $("#town").val(hotelData.Address.AddressLine2);
-    $("#rating").val(hotelData.Address.Rating);
-    hotel.eventManager.fire('RenderingDone', this);
-
+    var renderHotelInfo= function(){
+        var hotelData = hotelData;
+        $("#hotel-id").text(hotelData.HotelId);
+        $("#hotel-name").text(hotelData.Name);
+        $("#street").text(hotelData.Address.AddressLine1);
+        $("#town").text(hotelData.Address.AddressLine2);
+        $("#rating").text(hotelData.Address.Rating);
+        hotel.eventManager.fire('RenderingDone', this);
+    };
 }
 /**
 *Fetching pagination object from hotel collection and passing to pagination view
