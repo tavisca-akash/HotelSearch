@@ -3,12 +3,13 @@ window.hotel.model = window.hotel.model || {};
 window.hotel.model.hotelCollection = window.hotel.model.hotelCollection || {};
 
 hotel.model.hotelCollection = function () {
-    var _hotel = [];
-
+    var _hotels = [];
+    var _pagination;
+    var params;
     function fetchAllHotels(cityName) {
         params = params || {};
         params.city = cityName;
-        params.pageSize = params.pageSize || 10;
+        params.pageSize = params.pageSize || 50;
         params.pageNum = params.pageNum || 0;
 
 
@@ -21,10 +22,10 @@ hotel.model.hotelCollection = function () {
                 throw new Error('Could not fetch hotel information!!!');
 
             //pagination Object
-            pagination = pagination || {};
-            pagination.pageSize = pagination.pageSize || 10;
-            pagination.pageNum = pagination.pageNum || 0;
-            pagination.numberOfHotel = response.Hotels.length
+            _pagination = _pagination || {};
+            _pagination.pageSize = _pagination.pageSize || 10;
+            _pagination.pageNum = _pagination.pageNum || 0;
+            _pagination.numberOfHotel = response.Hotels.length;
 
             for (var index = 0; index < response.Hotels.length; index++) {
                 _hotels.push(new hotel.model.hotelModel(response.Hotels[index]));
@@ -38,6 +39,6 @@ hotel.model.hotelCollection = function () {
     return {
         fetch: fetchAllHotels,
         hotels: _hotels,
-        paginationObj: pagination
+        paginationObj: _pagination,
     };
 }
