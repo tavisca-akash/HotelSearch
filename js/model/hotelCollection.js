@@ -39,8 +39,19 @@ hotel.model.hotelCollection = function () {
             throw new Error('Could not handle the request!!!');
         });
     };
+
+    function fetchSpecificHotel(hotelID) {
+        for (iterartor = 0; iterartor < _hotels; iterartor++) {
+            if (_hotels[iterartor].hotelId === hotelID)
+                eventManager.fire('Specific Hotel Fectched', this, { hotelObject: _hotels[iterator] });
+            else
+                eventManager.fire('Specific Hotel Fectched', this, { hotelObject: null });
+        }
+    }
+
     return {
         fetch: fetchAllHotels,
+        fetchspecific: fetchSpecificHotel,
         hotels: _hotels,
         paginationObj: _pagination,
     };
