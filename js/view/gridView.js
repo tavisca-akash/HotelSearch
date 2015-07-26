@@ -1,10 +1,8 @@
 ﻿window.hotel.view.gridView = window.hotel.view.gridView || {};
 hotel.view.gridView.showGrid = (function (hotel) {
-    $("#canvas").click(function () {
-        $("p").hide();
-    });
+   $("canvas").hide();
 
-    var hotelObject = hotel;
+   var hotelObject = hotel;
 
     var table = $('<table class="table table-hover"/>');
     table[0].border = "1";
@@ -29,18 +27,18 @@ hotel.view.gridView.showGrid = (function (hotel) {
         row = $(table[0].insertRow(-1));
 
         var cell = $("<td />");
-        cell.html(hotel.Name);
+        cell.html(hotelObject[i].Name);
         row.append(cell);
 
         cell = $("<td />");
-        cell.html(hotel.Rating);
+        cell.html(hotelObject[i].Rating);
         row.append(cell);
 
         cell = $('<td> <a href="#">  Details </a> </td>');
+		 eventManager.fire('click', this, hotelObject[i].HotelId);
         row.append(cell);
     }
     var dvTable = $("#tableid");
     dvTable.html("");
     dvTable.append(table);
 })
-//TO DO >>>>>  Event to be fired : onclick Details : display details on left panel.
