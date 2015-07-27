@@ -1,5 +1,7 @@
 ﻿window.hotel = window.hotel || {};
 window.hotel.model = window.hotel.model || {};
+window.hotel.infra = window.hotel.infra || {};
+window.hotel.infra.config = window.hotel.infra.config || {};
 window.hotel.model.hotelCollection = window.hotel.model.hotelCollection || {};
 
 hotel.model.hotelCollection = function () {
@@ -16,7 +18,7 @@ hotel.model.hotelCollection = function () {
         if (!params.city || $.trim(params.city) === '')
             throw Error('City Name is required');
         _hotels = [];
-        var url = hotel.config.url + '?type=City&q=' + params.city + '&top=' + params.pageSize + '&skip=' + (params.pageNum * params.pageSize);
+        var url = hotel.infra.config.url + '?type=City&q=' + cityName + '&top=' + params.pageSize + '&skip=' + (params.pageNum * params.pageSize);
         $.getJSON(url, function (response) {
             if (!response || !response.Hotels)
                 throw new Error('Could not fetch hotel information!!!');

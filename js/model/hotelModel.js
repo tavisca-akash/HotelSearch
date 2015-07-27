@@ -7,32 +7,32 @@ hotel.model.hotelModel = function (hotel) {
         throw new Error('Invalid Arguments');
     var hotelObj = hotel;
     var hotelData = {
-        "Address": {
-            "AddressLine1": '',
-            "AddressLine2": '',
-            "City": '',
-            "Country": '',
-            "Zip": ''
-        },
-        "geoCode": {
-            "Latitude": 0.0,
-            "Longitude": 0.0
-        },
-        "HotelId": 0,
-        "Image": '',
-        "Name": '',
-        "Rating": 0
+        // "Address": {
+        //     "AddressLine1": '',
+        //     "AddressLine2": '',
+        //     "City": '',
+        //     "Country": '',
+        //     "Zip": ''
+        // },
+        // "geoCode": {
+        //     "Latitude": 0.0,
+        //     "Longitude": 0.0
+        // },
+        // "HotelId": 0,
+        // "Image": '',
+        // "Name": '',
+        // "Rating": 0
     };
 
     return
     (function () {
-        hotelData.Address = hotelObj.Address;
-        hotelData.HotelId = hotelObj.HotelId;
-        hotelData.Image = hotelObj.Image;
-        hotelData.Name = hotelObj.Name;
-        hotelData.Rating = hotelObj.Rating;
-        geoCode.Latitude = hotelObj.GeoCode.Latitude;
-        geoCode.Longitude = hotelObj.GeoCode.Longitude;
+        hotelData.Address = hotelObj.address;
+        hotelData.HotelId = hotelObj.hotelId;
+        hotelData.Image = hotelObj.image;
+        hotelData.Name = hotelObj.name;
+        hotelData.Rating = hotelObj.rating;
+        hotelData.geoCode.Latitude = hotelObj.GeoCode.latitude;
+        hotelData.geoCode.Longitude = hotelObj.GeoCode.longitude;
         return hotelData;
     }());
 };
