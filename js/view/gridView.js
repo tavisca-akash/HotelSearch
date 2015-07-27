@@ -1,4 +1,6 @@
-﻿window.hotel.view.gridView = window.hotel.view.gridView || {};
+window.hotel = window.hotel || {};
+window.hotel.view = window.hotel.view || {};
+window.hotel.view.gridView = window.hotel.view.gridView || {};
 hotel.view.gridView.showGrid = (function (hotel) {
    $("canvas").hide();
 
@@ -35,7 +37,7 @@ hotel.view.gridView.showGrid = (function (hotel) {
         row.append(cell);
 
         cell = $('<td> <a href="#">  Details </a> </td>');
-		 eventManager.fire('click', this, hotelObject[i].HotelId);
+		 eventManager.fire('DetailsClicled', this, { hotelId: hotelObject[i].HotelId });
         row.append(cell);
     }
     var dvTable = $("#tableid");
