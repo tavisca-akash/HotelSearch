@@ -21,6 +21,8 @@ window.hotel.view.mapView = (function(){
 
     var infowindow = new google.maps.InfoWindow();
 
+    console.log('HOTEL LIST>>>>>>>>>>>>>>>>');
+    console.log(hotelList);
     //--------------------------------------------------
     for (i = 0; i < hotelList.Hotels.length; i++) {
         marker = new google.maps.Marker({
@@ -44,7 +46,7 @@ window.hotel.view.mapView = (function(){
 
 // UNDER DISCUSSION
   google.maps.event.addDomListenerOnce($("#toggle-btn")[0], 'click', function () {
-  
+    this.renderMarker();
   });
 
   return{

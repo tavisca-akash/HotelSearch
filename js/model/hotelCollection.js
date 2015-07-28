@@ -2,13 +2,15 @@
 window.hotel.model = window.hotel.model || {};
 window.hotel.infra = window.hotel.infra || {};
 window.hotel.infra.config = window.hotel.infra.config || {};
-window.hotel.model.hotelCollection = window.hotel.model.hotelCollection || {};
+// window.hotel.model.hotelCollection = window.hotel.model.hotelCollection || {};
 
-hotel.model.hotelCollection = function () {
+hotel.model.hotelCollection = (function () {
     var _hotels = [];
     var _pagination;
     var params;
     function fetchAllHotels(cityName) {
+        console.log('REACHING HOTEL COLLECTION>>>>>>>>>>>>> ');
+
         params = params || {};
         params.city = cityName;
         params.pageSize = params.pageSize || 50;
@@ -18,6 +20,9 @@ hotel.model.hotelCollection = function () {
         if (!params.city || $.trim(params.city) === '')
             throw Error('City Name is required');
         _hotels = [];
+
+        console.log('REACHING HOTEL COLLECTION>>>>>>>>>>>>> ');
+        console.log(cityName);
         var url = hotel.infra.config.url + '?type=City&q=' + cityName + '&top=' + params.pageSize + '&skip=' + (params.pageNum * params.pageSize);
         $.getJSON(url, function (response) {
             if (!response || !response.Hotels)
@@ -56,4 +61,4 @@ hotel.model.hotelCollection = function () {
         hotels: _hotels,
         paginationObj: _pagination,
     };
-}
+})

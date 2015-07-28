@@ -2,6 +2,8 @@ window.hotel = window.hotel || {};
 window.hotel.view = window.hotel.view || {};
 window.hotel.view.gridView = window.hotel.view.gridView || {};
 hotel.view.gridView.showGrid = (function (hotel) {
+    console.log('HERE>>>>>>>>>>>>>>>>>>> GRID VIEW');
+
    $("canvas").hide();
 
    var hotelObject = hotel;
