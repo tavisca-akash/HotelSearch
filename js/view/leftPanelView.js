@@ -28,31 +28,32 @@ window.hotel.view = window.hotel.view || {};
 
   window.hotel.view.leftPanelView = (function () {
     console.log('HERE>>>>>>>>>>>>>>>>>>> is this being called??? THIS SHOULD BE COOL!!!');
-    var hotelInfo = function(hotelData) {
-      console.log('HERE>>>>>>>>>>>>>>>>>>> WTF???????? HOTELINFO??!!');
+    function hotelInfo (hotelData) {
+      console.log('HERE>>>>>>>>>>>>>>>>>>> HOTELINFO??!!');
       var hotelData = hotelData;
-      $("#hotel-id").text(hotelData.HotelId);
-      $("#hotel-name").text(hotelData.Name);
-      $("#street").text(hotelData.Address.AddressLine1);
-      $("#town").text(hotelData.Address.AddressLine2);
-      $("#rating").text(hotelData.Address.Rating);
+      $("#hotel-id").text(hotelData.hotelId);
+      $("#hotel-name").text(hotelData.name);
+      $("#street").text(hotelData.address.AddressLine1);
+      $("#town").text(hotelData.address.AddressLine2);
+      $("#rating").text(hotelData.rating);
       eventManager.fire('RenderingDone', this, {});
     };
 
-    var viewCheck = function(hotelData) {
+    function viewCheck (hotelData) {
+      console.log('HERE>>>>>>>>>>>>>>>>>>> ViewCheck??!!');
       // $("#grid-btn").click(function () {
       if ($("#map-btn").hasClass('active')) {
         console.log('HERE>>>>>>>>>>>>>>>>>>> map VIEW');
-        eventManager.fire('map-button-clicked', this);
+        eventManager.fire('map-button-clicked', this, hotelData);
       } else {
         if(!$("#grid-btn").hasClass('active')) {
           $("#grid-btn").addClass('active');
         }
-        eventManager.fire('grid-button-clicked', this);
+        eventManager.fire('grid-button-clicked', this, hotelData);
       }
     }
 
-    var proxy = function() {
+    function proxy() {
       console.log('HERE>>>>>>>>>>>>>>>>>>> LEFT PANEL VIEW');
       eventManager.fire('PaginationProxy', this, hotelsFetched);
     };

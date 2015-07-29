@@ -13,7 +13,7 @@ hotel.model.hotelCollection = (function () {
 
         params = params || {};
         params.city = args.cityName;
-        params.pageSize = params.pageSize || 50;
+        params.pageSize = params.pageSize || 10;
         params.pageNum = params.pageNum || 0;
 
 

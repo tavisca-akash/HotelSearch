@@ -1,7 +1,14 @@
 window.hotel = window.hotel || {};
 window.hotel.view = window.hotel.view || {};
 window.hotel.view.gridView = window.hotel.view.gridView || {};
-hotel.view.gridView.showGrid = (function (hotel) {
+
+$('.detailLink').click(function () {
+
+});
+
+hotel.view.gridView = (function () {
+
+  function showGrid(hotel) {
     console.log('HERE>>>>>>>>>>>>>>>>>>> GRID VIEW');
     console.log('hotel', hotel);
 
@@ -29,21 +36,27 @@ hotel.view.gridView.showGrid = (function (hotel) {
 
     //Add the data rows.
     for (var i = 1; i < hotel.length; i++) {
-        row = $(table[0].insertRow(-1));
+      row = $(table[0].insertRow(-1));
 
-        var cell = $("<td />");
-        cell.html(hotelObject[i].Name);
-        row.append(cell);
+      var cell = $("<td />");
+      cell.html(hotelObject[i].name);
+      row.append(cell);
 
-        cell = $("<td />");
-        cell.html(hotelObject[i].Rating);
-        row.append(cell);
+      cell = $("<td />");
+      cell.html(hotelObject[i].rating);
+      row.append(cell);
 
-        cell = $('<td> <a href="#">  Details </a> </td>');
-		 eventManager.fire('DetailsClicled', this, { hotelId: hotelObject[i].HotelId });
-        row.append(cell);
+      cell = $('<td> <a href="#" class="detailLink" data-id="'+ hotelObject[i].hotelId +'">  Details </a> </td>');
+      row.append(cell);
+      // eventManager.fire('DetailsClicled', this, { hotelId: hotelObject[i].hotelId });
+
     }
     var dvTable = $("#tableid");
     dvTable.html("");
     dvTable.append(table);
+  }
+  return {
+    showGrid: showGrid
+  }
+
 })
