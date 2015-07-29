@@ -65,11 +65,12 @@ window.eventManager = new function() {
     console.log('sender', sender);
     console.log('params', params);
 
-    if (eventName !== undefined || sender !== undefined) {
+    if (eventName !== undefined || sender !== undefined || _subscribe[eventName] !== undefined) {
       for (var i = 0; i < _subscribe[eventName].callbacksArray.length; i++) {
         setTimeout(function(context, callback, sender, args){
           console.log('CALLBACK!!!!', callback);
-          callback.apply(context, [sender, args])
+          console.log('ARGUMENTS!!!!', args);
+          callback.apply(context, [args, sender])
         }, 0, _subscribe[eventName].callbacksArray[i].context, _subscribe[eventName].callbacksArray[i].eventHandler, sender, params);
       }
     }

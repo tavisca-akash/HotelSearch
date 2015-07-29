@@ -17,7 +17,7 @@ window.hotel.model = window.hotel.model || {};
    // {
     // window.eventManager.subscribe('Hotels.fetched', newMap, newMap.renderMarker);
    // } else {
-    // window.eventManager.subscribe('Hotels.fetched', hotel.view.gridView, hotel.view.gridView.showGrid);
+    window.eventManager.subscribe('Hotels.fetched', newMap = newMap || new window.hotel.view.mapView(), newMap.renderMarker);
    // }
   window.eventManager.subscribe('DetailsClicked', newCollection = newCollection || window.hotel.model.hotelCollection(), newCollection.fetchspecific);
   window.eventManager.subscribe('grid-button-clicked', newGrid = newGrid || new window.hotel.view.leftPanelView(), newGrid.hotelInfo);

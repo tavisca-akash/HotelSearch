@@ -24,15 +24,14 @@ hotel.model.hotelModel = function (hotel) {
         // "Rating": 0
     };
 
-    return
-    (function () {
-        hotelData.Address = hotelObj.address;
-        hotelData.HotelId = hotelObj.hotelId;
-        hotelData.Image = hotelObj.image;
-        hotelData.Name = hotelObj.name;
-        hotelData.Rating = hotelObj.rating;
-        hotelData.geoCode.Latitude = hotelObj.GeoCode.latitude;
-        hotelData.geoCode.Longitude = hotelObj.GeoCode.longitude;
-        return hotelData;
-    }());
+    hotelData.address = hotelObj.Address;
+    hotelData.hotelId = hotelObj.HotelId;
+    hotelData.image = hotelObj.Image;
+    hotelData.name = hotelObj.Name;
+    hotelData.rating = hotelObj.Rating;
+    hotelData.geoCode = {};
+    hotelData.geoCode.Latitude = hotelObj.GeoCode.Latitude;
+    hotelData.geoCode.Longitude = hotelObj.GeoCode.Longitude;
+
+    return hotelData;
 };

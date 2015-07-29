@@ -24,19 +24,19 @@ window.hotel.view.mapView = (function(){
     console.log('HOTEL LIST>>>>>>>>>>>>>>>>');
     console.log(hotelList);
     //--------------------------------------------------
-    for (i = 0; i < hotelList.Hotels.length; i++) {
+    for (i = 0; i < hotelList.hotelList.length; i++) {
         marker = new google.maps.Marker({
-            position: new google.maps.LatLng(hotelList.Hotels[i].GeoCode.Latitude, hotelList.Hotels[i].GeoCode.Longitude),
+            position: new google.maps.LatLng(hotelList.hotelList[i].geoCode.Latitude, hotelList.hotelList[i].geoCode.Longitude),
             map: map
         });
         //-------------------------------------------------------
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                infowindow.setContent(hotelList.Hotels[i].Name);
+                infowindow.setContent(hotelList.hotelList[i].Name);
                 infowindow.open(map, marker);
                 map.setZoom(13);
                 map.setCenter(marker.getPosition());
-                eventManager.fire('DetailsClicked', this, hotelList.Hotels[i].HotelId);
+                eventManager.fire('DetailsClicked', this, hotelList.hotelList[i].HotelId);
 
             }
         })(marker, i));
@@ -46,7 +46,7 @@ window.hotel.view.mapView = (function(){
 
 // UNDER DISCUSSION
   google.maps.event.addDomListenerOnce($("#toggle-btn")[0], 'click', function () {
-    this.renderMarker();
+    renderMarker();
   });
 
   return{

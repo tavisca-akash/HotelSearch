@@ -8,11 +8,11 @@ hotel.model.hotelCollection = (function () {
     var _hotels = [];
     var _pagination;
     var params;
-    function fetchAllHotels(cityName) {
+    function fetchAllHotels(args) {
         console.log('REACHING HOTEL COLLECTION>>>>>>>>>>>>> ');
 
         params = params || {};
-        params.city = cityName;
+        params.city = args.cityName;
         params.pageSize = params.pageSize || 50;
         params.pageNum = params.pageNum || 0;
 
@@ -22,8 +22,8 @@ hotel.model.hotelCollection = (function () {
         _hotels = [];
 
         console.log('REACHING HOTEL COLLECTION>>>>>>>>>>>>> ');
-        console.log(cityName);
-        var url = hotel.infra.config.url + '?type=City&q=' + cityName + '&top=' + params.pageSize + '&skip=' + (params.pageNum * params.pageSize);
+        console.log(args.cityName);
+        var url = hotel.infra.config.url + '?type=City&q=' + args.cityName + '&top=' + params.pageSize + '&skip=' + (params.pageNum * params.pageSize);
         $.getJSON(url, function (response) {
             if (!response || !response.Hotels)
                 throw new Error('Could not fetch hotel information!!!');
@@ -36,9 +36,9 @@ hotel.model.hotelCollection = (function () {
             for (var index = 0; index < response.Hotels.length; index++) {
                 _hotels.push(new hotel.model.hotelModel(response.Hotels[index]));
             }
-            hotel.EventManager.fire('Hotels.fetched', this, {
+            eventManager.fire('Hotels.fetched', this, {
                 hotelList: _hotels,
-                pagination: pagination
+                pagination: _pagination
             });
 
         }).fail(function (error) {
